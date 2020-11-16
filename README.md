@@ -9,6 +9,49 @@ No Powershell?  No problem!
 ![alt text](https://github.com/4rch3r23/ArchersHandbook/blob/main/Screen%20Shot%202020-11-10%20at%201.26.47%20PM.png)
 
 ## Windows Host Enumeration
+
+##### WinPEAs
 - [WinPEAs Exe](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS/winPEASexe)
 - [WinPEAs Bat](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS/winPEASbat)
+
+##### PrivescCheck.ps1
 - [PrivescCheck.ps1 (Based on PowerUp)](https://github.com/itm4n/PrivescCheck)
+###### Basic usage
+
+From a command prompt:
+```
+C:\Temp\>powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck"
+```
+
+From a PowerShell prompt:
+```
+PS C:\Temp\> Set-ExecutionPolicy Bypass -Scope process -Force
+PS C:\Temp\> . .\PrivescCheck.ps1; Invoke-PrivescCheck
+```
+
+###### Extended mode
+
+By default, the scope is limited to __vulnerability discovery__ but, you can get a lot more information with the `-Extended` option:
+
+From a command prompt:
+```
+C:\Temp\>powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended"
+```
+
+From a PowerShell prompt:
+```
+PS C:\Temp\> Set-ExecutionPolicy Bypass -Scope process -Force
+PS C:\Temp\> . .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended
+```
+
+## Obfusctate files for movement / hiding
+###### Will create compressed version of desired file that is also Base64 encoded
+```
+certutil -encode .\InFile .\OutfileB64 && tar -cvf compressedFile .\OutfileB64
+```
+You can also replace `-encode` with `-encodehex` to alternatively (or in addition to) HEX encode your file.
+
+###### For Extracting obfuscated file
+```
+tar -xvf .\compressedFile && certutil -decode .\OutfileB64 .\InFile
+```
