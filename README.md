@@ -55,3 +55,6 @@ You can also replace `-encode` with `-encodehex` to alternatively (or in additio
 ```
 tar -xvf .\compressedFile && certutil -decode .\OutfileB64 .\InFile
 ```
+
+## All the Payloads!
+[PAYLOADS](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/7f36bf58a4dafaa6749a2af3f8d422f15c00f35e/Server%20Side%20Template%20Injection/README.md)
